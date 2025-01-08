@@ -203,6 +203,84 @@
             color: #008080;
         }
 
+        .achievement-stats {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .performance-badge {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+        }
+
+        .badge-label {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .badge-sublabel {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+
+        .metric-change {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .change-value {
+            font-size: 1.1em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .change-label {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .tier-progress {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .progress-label {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .mini-progress-bar {
+            width: 120px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .mini-progress-fill {
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+        }
+
+        .progress-value {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
         .achievement-card i[class*="fa-"],
         .achievement-card .trend-indicator {
             color: white;
@@ -235,16 +313,25 @@
                         <p style="font-size: 2.5em; margin: 10px 0;">82.9%</p>
                         <p>Combined Performance Score (70% PPO + 30% PPG)</p>
                     </div>
-                    <div style="text-align: right;">
-                        <div class="trend-indicator trend-up">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>+5% from last month</span>
+                    <div class="achievement-stats">
+                        <div class="performance-badge">
+                            <span class="badge-label">Top 15%</span>
+                            <span class="badge-sublabel">in Region</span>
                         </div>
-                        <p style="margin-top: 10px;">
-                            <i class="fas fa-star"></i>
-                            Top 15% Performer
-                        </p>
-                        <p style="margin-top: 5px;">Path to Excellence: 7.1% to reach next tier</p>
+                        <div class="metric-change">
+                            <div class="change-value trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+5%</span>
+                            </div>
+                            <span class="change-label">from last month</span>
+                        </div>
+                        <div class="tier-progress">
+                            <div class="progress-label">Next Tier</div>
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 93%;"></div>
+                            </div>
+                            <span class="progress-value">7.1% to go</span>
+                        </div>
                     </div>
                 </div>
             </div>
