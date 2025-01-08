@@ -346,7 +346,154 @@
     </div>
 
     <script>
-        // JavaScript remains the same
+        function openTab(tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            const tabs = document.getElementsByClassName('tab-button');
+            
+            Array.from(tabContents).forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            Array.from(tabs).forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            if (tabName === 'comparison') {
+                initializePeerComparisonChart();
+            } else if (tabName === 'trends') {
+                initializeTrendsChart();
+            }
+        }
+
+        function initializePeerComparisonChart() {
+            const ctx = document.getElementById('peerComparisonChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Your Performance', 'Top Performer', 'Average', 'Minimum Target'],
+                    datasets: [{
+                        label: 'Overall Performance Score',
+                        data: [82.9, 95, 75, 70],
+                        backgroundColor: [
+                            '#008080',
+                            '#006666',
+                            '#009999',
+                            '#004C4C'
+                        ],
+                        borderColor: [
+                            '#008080',
+                            '#006666',
+                            '#009999',
+                            '#004C4C'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Score: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                color: '#36454F'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#36454F'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initializeTrendsChart() {
+            const ctx = document.getElementById('trendsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+                    datasets: [
+                        {
+                            label: 'PPO Score',
+                            data: [75, 78, 80, 82, 83, 85],
+                            borderColor: '#008080',
+                            tension: 0.4,
+                            fill: false
+                        },
+                        {
+                            label: 'PPG Score',
+                            data: [70, 72, 74, 75, 77, 78],
+                            borderColor: '#006666',
+                            tension: 0.4,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        },
+                        legend: {
+                            labels: {
+                                color: '#36454F'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 60,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                color: '#36454F'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#36454F'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePeerComparisonChart();
+            initializeTrendsChart();
+        });
     </script>
 </body>
 </html>
