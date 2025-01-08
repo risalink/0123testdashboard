@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced MR Performance Dashboard</title>
+    <title>MR Performance Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -14,163 +14,151 @@
         }
 
         body {
-            background-color: #f0f2f5;
+            background-color: #f5f5f5;
             padding: 20px;
-            color: #36454F;
+            color: #333;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
         }
 
         .download-btn {
-            background-color: #008080;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            border-radius: 4px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 14px;
+            color: #333;
         }
+
         .achievement-card {
-            background: linear-gradient(135deg, #008080, #006666);
+            background: #008080;
             color: white;
             padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .achievement-stats {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-        }
-
-        .metric-pill {
-            background: rgba(255,255,255,0.15);
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .next-goals {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 15px 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            border-radius: 12px;
             margin-bottom: 30px;
         }
 
-        .product-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .product-header {
+        .trophy-icon {
+            font-size: 32px;
             margin-bottom: 15px;
         }
 
-        .weight-badge {
-            background: #e6f3f3;
-            color: #008080;
-            padding: 4px 8px;
-            border-radius: 8px;
-            font-size: 0.8em;
-            margin-left: 8px;
+        .score-title {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        .progress-section {
-            background: #f7f7f7;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
+        .score-value {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 0.9em;
+        .score-tier {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 10px;
         }
 
-        .progress-bar {
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 5px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #008080;
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .progress-fill.regional {
-            background: #006666;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        .score-description {
+            font-size: 14px;
+            opacity: 0.9;
             margin-bottom: 20px;
+        }
+
+        .metric-pills {
+            display: flex;
+            gap: 15px;
+        }
+
+        .metric-pill {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 8px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .metric-pill-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .metric-pill-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .performance-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .metric-card {
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .metric-card:hover {
-            transform: translateY(-5px);
+        .metric-card-icon {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #008080;
         }
 
-        .ppg-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .metric-card-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
         }
 
-        .target-info {
-            font-size: 0.8em;
+        .metric-card-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #008080;
+            margin-bottom: 5px;
+        }
+
+        .metric-card-description {
+            font-size: 14px;
             color: #666;
-            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .trend {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #008080;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
         }
     </style>
 </head>
@@ -178,10 +166,8 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div>
-                <h1>MR Performance Dashboard</h1>
-                <p>Track your progress and maximize your impact</p>
-            </div>
+            <h1>MR Performance Dashboard</h1>
+            <p>Track your progress and maximize your impact</p>
             <button class="download-btn">
                 <i class="fas fa-download"></i>
                 Download Report
@@ -190,76 +176,56 @@
 
         <!-- Achievement Card -->
         <div class="achievement-card">
-            <div class="achievement-stats">
-                <div>
-                    <div class="achievement-badge">
-                        <i class="fas fa-trophy fa-2x"></i>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <h2>Total Achievement Score</h2>
-                        <div style="display: flex; align-items: baseline; gap: 10px;">
-                            <span style="font-size: 2.5em; font-weight: bold;">82.9%</span>
-                            <span>Silver Tier</span>
-                        </div>
-                        <p style="font-size: 0.9em; margin-top: 5px;">Combined Performance Score (70% PPO + 30% PPG)</p>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                        <div class="metric-pill">
-                            <div style="font-size: 1.2em; font-weight: bold;">+5%</div>
-                            <div style="font-size: 0.8em; opacity: 0.9;">Monthly</div>
-                        </div>
-                        <div class="metric-pill">
-                            <div style="font-size: 1.2em; font-weight: bold;">15%</div>
-                            <div style="font-size: 0.8em; opacity: 0.9;">Regional Rank</div>
-                        </div>
-                        <div class="metric-pill">
-                            <div style="font-size: 1.2em; font-weight: bold;">7.1%</div>
-                            <div style="font-size: 0.8em; opacity: 0.9;">To Gold</div>
-                        </div>
-                    </div>
+            <i class="fas fa-trophy trophy-icon"></i>
+            <h2 class="score-title">Total Achievement Score</h2>
+            <div class="score-value">82.9%</div>
+            <div class="score-tier">Silver Tier</div>
+            <div class="score-description">Combined Performance Score (70% PPO + 30% PPG)</div>
+            
+            <div class="metric-pills">
+                <div class="metric-pill">
+                    <div class="metric-pill-value">+5%</div>
+                    <div class="metric-pill-label">Monthly</div>
                 </div>
-                <div class="next-goals">
-                    <h3>Priority Actions</h3>
-                    <ul style="list-style: none; margin-top: 10px;">
-                        <li>• Increase NOX sales by 5%</li>
-                        <li>• Complete 2 facility presentations</li>
-                        <li>• Follow up on LAG prescriptions</li>
-                    </ul>
+                <div class="metric-pill">
+                    <div class="metric-pill-value">15%</div>
+                    <div class="metric-pill-label">Regional Rank</div>
                 </div>
             </div>
         </div>
 
-        <!-- Summary Metrics -->
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <i class="fas fa-chart-line fa-2x"></i>
-                    <h3>PPO Score</h3>
-                    <p style="font-size: 1.8em; margin: 10px 0;">85%</p>
-                    <p>70% of total evaluation</p>
-                    <div class="trend-indicator trend-up">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>3.2% increase</span>
-                    </div>
+        <!-- Performance Metrics -->
+        <div class="performance-metrics">
+            <div class="metric-card">
+                <i class="fas fa-chart-line metric-card-icon"></i>
+                <div class="metric-card-title">PPO Score</div>
+                <div class="metric-card-value">85%</div>
+                <div class="metric-card-description">70% of total evaluation</div>
+                <div class="trend">
+                    <i class="fas fa-arrow-up"></i>
+                    3.2% increase
                 </div>
-                <div class="metric-card">
-                    <i class="fas fa-tasks fa-2x"></i>
-                    <h3>PPG Score</h3>
-                    <p style="font-size: 1.8em; margin: 10px 0;">78%</p>
-                    <p>30% of total evaluation</p>
-                    <div class="trend-indicator trend-up">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>2.5% increase</span>
-                    </div>
+            </div>
+
+            <div class="metric-card">
+                <i class="fas fa-tasks metric-card-icon"></i>
+                <div class="metric-card-title">PPG Score</div>
+                <div class="metric-card-value">78%</div>
+                <div class="metric-card-description">30% of total evaluation</div>
+                <div class="trend">
+                    <i class="fas fa-arrow-up"></i>
+                    2.5% increase
                 </div>
-                <div class="metric-card">
-                    <i class="fas fa-users fa-2x"></i>
-                    <h3>Peer Ranking</h3>
-                    <p style="font-size: 1.8em; margin: 10px 0;">3/20</p>
-                    <p>Within your region</p>
-                    <div class="trend-indicator trend-up">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>Up 2 positions</span>
-                    </div>
+            </div>
+
+            <div class="metric-card">
+                <i class="fas fa-users metric-card-icon"></i>
+                <div class="metric-card-title">Peer Ranking</div>
+                <div class="metric-card-value">3/20</div>
+                <div class="metric-card-description">Within your region</div>
+                <div class="trend">
+                    <i class="fas fa-arrow-up"></i>
+                    Up 2 positions
                 </div>
             </div>
         </div>
