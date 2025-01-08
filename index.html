@@ -1,16 +1,47 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle 
+} from "@/components/ui/card";
+import { 
+  Tabs, 
+  TabsContent, 
+  TabsList, 
+  TabsTrigger 
+} from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import { Trophy, TrendingUp, Activity, Download, Target, Users, ArrowUp } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, RadialBarChart, RadialBar } from 'recharts';
+import { 
+  Trophy, 
+  TrendingUp, 
+  Activity, 
+  Download, 
+  Target, 
+  Users, 
+  ArrowUp 
+} from 'lucide-react';
+import { 
+  LineChart, 
+  Line, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  Legend, 
+  ResponsiveContainer, 
+  BarChart, 
+  Bar, 
+  RadialBarChart, 
+  RadialBar 
+} from 'recharts';
 
-// Sample data structure
+// Performance data structure
 const performanceData = {
   currentMonth: "January",
   ppo: 85,
   ppg: 78,
-  totalScore: 82.9, // 70% PPO + 30% PPG
+  totalScore: 82.9,
   products: {
     PRV: { attainment: 90, weight: 0.25, payout: 95, trend: [80, 85, 88, 90] },
     NOX: { attainment: 75, weight: 0.20, payout: 80, trend: [70, 72, 74, 75] },
@@ -33,49 +64,54 @@ const performanceData = {
   }
 };
 
+// MetricCard component
+const MetricCard = ({ title, value, icon, color, subtext }) => (
+  <Card>
+    <CardContent className="p-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-gray-500">{title}</p>
+          <h3 className="text-2xl font-bold mt-1">{value}%</h3>
+          {subtext && <p className="text-xs text-gray-500 mt-1">{subtext}</p>}
+        </div>
+        <div className={`p-3 rounded-full ${color}`}>
+          {icon}
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+);
+
+// ProductCard component
+const ProductCard = ({ product, data }) => (
+  <Card>
+    <CardContent className="p-4">
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="font-bold">{product}</h3>
+        <span className="text-sm text-gray-500">
+          Weight: {(data.weight * 100).toFixed(0)}%
+        </span>
+      </div>
+      <div className="space-y-2">
+        <div className="flex justify-between text-sm">
+          <span>Attainment</span>
+          <span className="font-medium">{data.attainment}%</span>
+        </div>
+        <Progress value={data.attainment} className="h-2" />
+        <div className="flex justify-between text-sm">
+          <span>Payout Rate</span>
+          <span className={data.payout >= data.attainment ? 'text-green-500' : 'text-red-500'}>
+            {data.payout}%
+          </span>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+);
+
+// Main Dashboard component
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
-
-  const MetricCard = ({ title, value, icon, color, subtext }) => (
-    <Card className="bg-white">
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm text-gray-500">{title}</p>
-            <h3 className="text-2xl font-bold mt-1">{value}%</h3>
-            {subtext && <p className="text-xs text-gray-500 mt-1">{subtext}</p>}
-          </div>
-          <div className={`p-3 rounded-full ${color}`}>
-            {icon}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-
-  const ProductCard = ({ product, data }) => (
-    <Card className="bg-white">
-      <CardContent className="p-4">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-bold">{product}</h3>
-          <span className="text-sm text-gray-500">Weight: {data.weight * 100}%</span>
-        </div>
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span>Attainment</span>
-            <span className="font-medium">{data.attainment}%</span>
-          </div>
-          <Progress value={data.attainment} className="h-2" />
-          <div className="flex justify-between text-sm">
-            <span>Payout Rate</span>
-            <span className={`font-medium ${data.payout >= data.attainment ? 'text-green-500' : 'text-red-500'}`}>
-              {data.payout}%
-            </span>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -115,21 +151,21 @@ const Dashboard = () => {
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <MetricCard 
-            title="PPO Score" 
+            title="PPO Score"
             value={performanceData.ppo}
             icon={<Trophy className="text-yellow-500" size={24} />}
             color="bg-yellow-100"
             subtext="70% of total evaluation"
           />
           <MetricCard 
-            title="PPG Score" 
+            title="PPG Score"
             value={performanceData.ppg}
             icon={<Activity className="text-blue-500" size={24} />}
             color="bg-blue-100"
             subtext="30% of total evaluation"
           />
           <MetricCard 
-            title="Peer Ranking" 
+            title="Peer Ranking"
             value={`${performanceData.peerComparison.yourRank}/${performanceData.peerComparison.totalPeers}`}
             icon={<Users className="text-purple-500" size={24} />}
             color="bg-purple-100"
@@ -137,7 +173,7 @@ const Dashboard = () => {
           />
         </div>
 
-        {/* Main Content */}
+        {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
           <TabsList className="bg-white p-1 rounded-lg">
             <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -154,40 +190,29 @@ const Dashboard = () => {
           </TabsContent>
 
           {/* PPG Metrics Tab */}
-          <TabsContent value="ppg" className="space-y-6">
+          <TabsContent value="ppg">
             <Card>
               <CardHeader>
                 <CardTitle>PPG Performance Metrics</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h3 className="font-medium">アクティビティパフォーマンス</h3>
-                    <Progress value={performanceData.ppgMetrics.activityPerformance.value} />
-                    <p className="text-sm text-gray-500">Rank: {performanceData.ppgMetrics.activityPerformance.rank}/{performanceData.ppgMetrics.activityPerformance.totalMRs}</p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="font-medium">SOT(処方可能施設率)</h3>
-                    <Progress value={performanceData.ppgMetrics.sotFacilityRate.value} />
-                    <p className="text-sm text-gray-500">Rank: {performanceData.ppgMetrics.sotFacilityRate.rank}/{performanceData.ppgMetrics.sotFacilityRate.totalMRs}</p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="font-medium">SOT(初回処方確認率)</h3>
-                    <Progress value={performanceData.ppgMetrics.sotFirstPrescriptionRate.value} />
-                    <p className="text-sm text-gray-500">Rank: {performanceData.ppgMetrics.sotFirstPrescriptionRate.rank}/{performanceData.ppgMetrics.sotFirstPrescriptionRate.totalMRs}</p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="font-medium">説明会実施率(評価対象回数)</h3>
-                    <Progress value={performanceData.ppgMetrics.presentationRate.value} />
-                    <p className="text-sm text-gray-500">Rank: {performanceData.ppgMetrics.presentationRate.rank}/{performanceData.ppgMetrics.presentationRate.totalMRs}</p>
-                  </div>
+                  {Object.entries(performanceData.ppgMetrics).map(([metric, data]) => (
+                    <div key={metric} className="space-y-4">
+                      <h3 className="font-medium">{metric}</h3>
+                      <Progress value={data.value} />
+                      <p className="text-sm text-gray-500">
+                        Rank: {data.rank}/{data.totalMRs}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Peer Comparison Tab */}
-          <TabsContent value="comparison" className="space-y-6">
+          {/* Comparison Tab */}
+          <TabsContent value="comparison">
             <Card>
               <CardHeader>
                 <CardTitle>Performance Distribution</CardTitle>
