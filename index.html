@@ -147,16 +147,32 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1>MR Performance Dashboard</h1>
+                <p>Track your progress and maximize your impact</p>
+            </div>
+            <button class="download-btn">
+                <i class="fas fa-download"></i>
+                Download Report
+            </button>
+        </div>
+
         <!-- Achievement Card -->
         <div class="achievement-card">
             <div class="achievement-stats">
                 <div>
+                    <div class="achievement-badge">
+                        <i class="fas fa-trophy fa-2x"></i>
+                    </div>
                     <div style="margin-bottom: 20px;">
-                        <h2>Total Performance</h2>
+                        <h2>Total Achievement Score</h2>
                         <div style="display: flex; align-items: baseline; gap: 10px;">
                             <span style="font-size: 2.5em; font-weight: bold;">82.9%</span>
                             <span>Silver Tier</span>
                         </div>
+                        <p style="font-size: 0.9em; margin-top: 5px;">Combined Performance Score (70% PPO + 30% PPG)</p>
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
                         <div class="metric-pill">
@@ -180,6 +196,40 @@
                         <li>• Complete 2 facility presentations</li>
                         <li>• Follow up on LAG prescriptions</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <i class="fas fa-chart-line fa-2x"></i>
+                <h3>PPO Score</h3>
+                <p style="font-size: 1.8em; margin: 10px 0;">85%</p>
+                <p>70% of total evaluation</p>
+                <div class="trend-indicator trend-up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>3.2% increase</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-tasks fa-2x"></i>
+                <h3>PPG Score</h3>
+                <p style="font-size: 1.8em; margin: 10px 0;">78%</p>
+                <p>30% of total evaluation</p>
+                <div class="trend-indicator trend-up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>2.5% increase</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-users fa-2x"></i>
+                <h3>Peer Ranking</h3>
+                <p style="font-size: 1.8em; margin: 10px 0;">3/20</p>
+                <p>Within your region</p>
+                <div class="trend-indicator trend-up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Up 2 positions</span>
                 </div>
             </div>
         </div>
