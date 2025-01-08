@@ -172,13 +172,373 @@
                         <div class="progress-fill"></div>
                     </div>
                 </div>
-                <div class="action-chip">
-                    <i class="fas fa-arrow-trend-up"></i>
-                    <span>Focus needed: PRV & NOX</span>
+            </div>
+        </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <i class="fas fa-chart-line fa-2x"></i>
+                    <h3>PPO Score</h3>
+                    <p style="font-size: 1.8em; margin: 10px 0;">85%</p>
+                    <p>70% of total evaluation</p>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>3.2% increase</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-tasks fa-2x"></i>
+                    <h3>PPG Score</h3>
+                    <p style="font-size: 1.8em; margin: 10px 0;">78%</p>
+                    <p>30% of total evaluation</p>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>2.5% increase</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-users fa-2x"></i>
+                    <h3>Peer Ranking</h3>
+                    <p style="font-size: 1.8em; margin: 10px 0;">3/20</p>
+                    <p>Within your region</p>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>Up 2 positions</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Rest of the dashboard content remains the same -->
+
+        <!-- Dynamic Section -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('products')">Products</button>
+            <button class="tab-button" onclick="openTab('ppg')">PPG Metrics</button>
+            <button class="tab-button" onclick="openTab('comparison')">Peer Comparison</button>
+            <button class="tab-button" onclick="openTab('trends')">Trends</button>
+        </div>
+
+        <!-- Products Tab -->
+        <div id="products" class="tab-content active">
+            <div class="product-grid">
+                <!-- PRV Card -->
+                <div class="product-card">
+                    <h3>PRV</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Weight: 25%</div>
+                        <div class="stat-item">Attainment: 90%</div>
+                        <div class="stat-item">Target: ¥10M</div>
+                        <div class="stat-item">Achieved: ¥9M</div>
+                    </div>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>5.2% above target</span>
+                    </div>
+                </div>
+
+                <!-- NOX Card -->
+                <div class="product-card">
+                    <h3>NOX</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Weight: 20%</div>
+                        <div class="stat-item">Attainment: 75%</div>
+                        <div class="stat-item">Target: ¥8M</div>
+                        <div class="stat-item">Achieved: ¥6M</div>
+                    </div>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>2.1% above last month</span>
+                    </div>
+                </div>
+
+                <!-- LAG Card -->
+                <div class="product-card">
+                    <h3>LAG</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Weight: 20%</div>
+                        <div class="stat-item">Attainment: 85%</div>
+                        <div class="stat-item">Target: ¥7M</div>
+                        <div class="stat-item">Achieved: ¥5.95M</div>
+                    </div>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>3.5% above target</span>
+                    </div>
+                </div>
+
+                <!-- ZBX Card -->
+                <div class="product-card">
+                    <h3>ZBX</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 82%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Weight: 15%</div>
+                        <div class="stat-item">Attainment: 82%</div>
+                        <div class="stat-item">Target: ¥6M</div>
+                        <div class="stat-item">Achieved: ¥4.92M</div>
+                    </div>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>1.8% above target</span>
+                    </div>
+                </div>
+
+                <!-- PIF Card -->
+                <div class="product-card">
+                    <h3>PIF</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Weight: 10%</div>
+                        <div class="stat-item">Attainment: 88%</div>
+                        <div class="stat-item">Target: ¥4M</div>
+                        <div class="stat-item">Achieved: ¥3.52M</div>
+                    </div>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>4.2% above target</span>
+                    </div>
+                </div>
+
+                <!-- IS Card -->
+                <div class="product-card">
+                    <h3>IS</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Weight: 10%</div>
+                        <div class="stat-item">Attainment: 80%</div>
+                        <div class="stat-item">Target: ¥3M</div>
+                        <div class="stat-item">Achieved: ¥2.4M</div>
+                    </div>
+                    <div class="trend-indicator trend-up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>1.5% above target</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PPG Metrics Tab -->
+        <div id="ppg" class="tab-content">
+            <div class="metrics-grid">
+                <div class="ppg-metric">
+                    <h3>アクティビティパフォーマンス</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Current: 85%</div>
+                        <div class="stat-item">Rank: 3/20</div>
+                    </div>
+                </div>
+                <div class="ppg-metric">
+                    <h3>SOT(処方可能施設率)</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 78%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Current: 78%</div>
+                        <div class="stat-item">Rank: 5/20</div>
+                    </div>
+                </div>
+                <div class="ppg-metric">
+                    <h3>SOT(初回処方確認率)</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 92%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Current: 92%</div>
+                        <div class="stat-item">Rank: 1/20</div>
+                    </div>
+                </div>
+                <div class="ppg-metric">
+                    <h3>説明会実施率(評価対象回数)</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%;"></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">Current: 88%</div>
+                        <div class="stat-item">Rank: 2/20</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Peer Comparison Tab -->
+        <div id="comparison" class="tab-content">
+            <div class="chart-container">
+                <canvas id="peerComparisonChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Trends Tab -->
+        <div id="trends" class="tab-content">
+            <div class="chart-container">
+                <canvas id="trendsChart"></canvas>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function openTab(tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            const tabs = document.getElementsByClassName('tab-button');
+            
+            Array.from(tabContents).forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            Array.from(tabs).forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            if (tabName === 'comparison') {
+                initializePeerComparisonChart();
+            } else if (tabName === 'trends') {
+                initializeTrendsChart();
+            }
+        }
+
+        function initializePeerComparisonChart() {
+            const ctx = document.getElementById('peerComparisonChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Your Performance', 'Top Performer', 'Average', 'Minimum Target'],
+                    datasets: [{
+                        label: 'Overall Performance Score',
+                        data: [82.9, 95, 75, 70],
+                        backgroundColor: [
+                            '#008080',
+                            '#006666',
+                            '#009999',
+                            '#004C4C'
+                        ],
+                        borderColor: [
+                            '#008080',
+                            '#006666',
+                            '#009999',
+                            '#004C4C'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Score: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                color: '#36454F'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#36454F'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initializeTrendsChart() {
+            const ctx = document.getElementById('trendsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+                    datasets: [
+                        {
+                            label: 'PPO Score',
+                            data: [75, 78, 80, 82, 83, 85],
+                            borderColor: '#008080',
+                            tension: 0.4,
+                            fill: false
+                        },
+                        {
+                            label: 'PPG Score',
+                            data: [70, 72, 74, 75, 77, 78],
+                            borderColor: '#006666',
+                            tension: 0.4,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        },
+                        legend: {
+                            labels: {
+                                color: '#36454F'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 60,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                color: '#36454F'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#36454F'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePeerComparisonChart();
+            initializeTrendsChart();
+        });
+    </script>
 </body>
 </html>
